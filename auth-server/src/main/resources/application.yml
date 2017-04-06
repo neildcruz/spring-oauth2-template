@@ -1,0 +1,27 @@
+server:
+  port: 9191
+  
+  context-path: /uaa
+  
+logging:
+  level:
+    org.springframework.security: debug
+    com.netflix.discovery: off
+
+security:
+  sessions: if-required
+  
+  
+---
+
+spring:
+  profiles: default
+  
+  h2:
+    console:
+      enabled: true
+      path: /h2
+      
+management:
+  security:
+    enabled: false
