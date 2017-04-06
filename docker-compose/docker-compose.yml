@@ -14,8 +14,6 @@ services:
     image: eureka-server
     ports:
       - "8761:8761"
-    links:
-      - config-server
     environment:
       CONFIG_SERVER_URL: http://config-server:8888
 
