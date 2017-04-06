@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-oauth-template-config-server
+    name: spring-oauth2-template-config-server
     
   cloud:
     config:

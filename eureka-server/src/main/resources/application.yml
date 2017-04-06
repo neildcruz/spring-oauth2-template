@@ -1,0 +1,13 @@
+server:
+  port: 8761
+  
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
