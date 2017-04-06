@@ -1,0 +1,21 @@
+server:
+  port: 9000
+  
+logging:
+  level:
+    com.netflix.discovery: off
+
+
+---
+
+spring:
+  profiles: default
+  
+security:
+  basic:
+    enabled: false
+    
+management:
+  security:
+    enabled: false
+    

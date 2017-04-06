@@ -1,11 +1,13 @@
 server:
   port: 8761
-
+  
 logging:
   level:
     com.netflix.discovery: off
 
 eureka:
+  dashboard:
+    path: /eurekaui
   instance:
     hostname: localhost
   client:

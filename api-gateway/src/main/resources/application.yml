@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+################# Security Configuration ###################
+
+security:
+  basic:
+    enabled: false
+    
+management:
+  security:
+    enabled: false
+
+################# Hystrix & Ribbon Timeouts ###############
+
+# Disable Hystrix timeout globally (for all services)
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+          
+ribbon:
+  read-timeout: 30000
+  connect-timeout: 30000
+  
+################# Zuul Routes ##########################
+
+zuul:
+  routes:
+    auth-server:
+      path: /authserver/**
+      service-id: spring-oauth2-template-auth-server
+    eureka-dashboard:
+      path: /eurekaui/**
+      service-id: spring-oauth2-template-eureka-server
+      strip-prefix: false
+    eureka-static:
+      path: /eureka/**
+      service-id: spring-oauth2-template-eureka-server
+      strip-prefix: false
+    config-server:
+      path: /configserver/**
+      service-id: spring-oauth2-template-config-server

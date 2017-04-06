@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "eureka.client.healthcheck.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'eureka.client.healthcheck.enabled'"
+  },
+  {
+    "name": "hystrix.command.default.execution.timeout.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'hystrix.command.default.execution.timeout.enabled'"
+  },
+  {
+    "name": "ribbon.connect-timeout",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.-read-timeout'"
+  },
+  {
+    "name": "ribbon.read-timeout",
+    "type": "java.lang.String",
+    "description": "A description for 'ribbon.read-timeout'"
+  }
+]}

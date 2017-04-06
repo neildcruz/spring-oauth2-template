@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>eureka-server</artifactId>
+	<artifactId>resource-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>eureka-server</name>
-	<description>Eureka Server for service discovery</description>
+	<name>resource-server</name>
+	<description>Resource server that sits behid a gateway and is authenticated using oauth</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -31,7 +31,15 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
@@ -46,7 +54,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
 	</dependencies>
 
