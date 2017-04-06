@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring-oauth-template-config-server
+    
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/neildcruz/config-repository
