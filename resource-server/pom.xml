@@ -96,7 +96,6 @@
 						<id>build-image</id>
 						<phase>package</phase>
 						<goals>
-							<goal>removeImage</goal>
 							<goal>build</goal>
 						</goals>
 					</execution>

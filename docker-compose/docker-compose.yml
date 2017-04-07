@@ -1,6 +1,6 @@
 version: '2'
 services:
-  
+
   config-server:
     image: config-server
     ports:
@@ -32,6 +32,18 @@ services:
       image: api-gateway
       ports:
           - "8080:8080"
+      links:
+        - config-server
+        - eureka-server
+        - auth-server
+      environment:
+        CONFIG_SERVER_URL: http://config-server:8888
+        EUREKA_SERVER_URL: http://eureka-server:8761/eureka
+
+  resource-server:
+      image: resource-server
+      ports:
+        - "9000:9000"
       links:
         - config-server
         - eureka-server

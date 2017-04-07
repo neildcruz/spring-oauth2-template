@@ -1,11 +1,31 @@
 server:
   port: 8080
+  
+################# Logging configuration ###################
+
+logging:
+  level:
+    org.springframework.security: debug
+    org.springframework.web: debug
 
 ################# Security Configuration ###################
 
+auth:
+  server:
+    hostname: localhost
+
 security:
-  basic:
-    enabled: false
+  user:
+    password: none
+  oauth2:
+    client:
+      access-token-uri: http://${auth.server.hostname}:9191/uaa/oauth/token
+      user-authorization-uri: http://${auth.server.hostname}:9191/uaa/oauth/authorize
+      client-id: webapp
+      client-secret: webappsecret
+      grant-type: password
+    resource:
+      user-info-uri: http://${auth.server.hostname}:9191/uaa/user
     
 management:
   security:
@@ -24,7 +44,7 @@ hystrix:
 ribbon:
   read-timeout: 30000
   connect-timeout: 30000
-  
+
 ################# Zuul Routes ##########################
 
 zuul:
@@ -43,3 +63,7 @@ zuul:
     config-server:
       path: /configserver/**
       service-id: spring-oauth2-template-config-server
+    resource-server:
+      path: /resourceserver/**
+      service-id: spring-oauth2-template-resource-server
+      

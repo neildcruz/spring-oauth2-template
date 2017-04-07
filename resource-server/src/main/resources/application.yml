@@ -5,6 +5,15 @@ logging:
   level:
     com.netflix.discovery: off
 
+auth:
+  server:
+    hostname: localhost
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://${auth.server.hostname}:9999/uaa/user
+
 
 ---
 

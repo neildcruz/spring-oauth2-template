@@ -18,5 +18,10 @@
     "name": "ribbon.read-timeout",
     "type": "java.lang.String",
     "description": "A description for 'ribbon.read-timeout'"
+  },
+  {
+    "name": "auth.server.hostname",
+    "type": "java.lang.String",
+    "description": "A description for 'auth.server.hostname'"
   }
 ]}
