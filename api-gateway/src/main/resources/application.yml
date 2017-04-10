@@ -6,26 +6,25 @@ server:
 logging:
   level:
     org.springframework.security: debug
-    org.springframework.web: debug
+    com.netflix.discovery: off
 
 ################# Security Configuration ###################
 
-auth:
-  server:
-    hostname: localhost
-
 security:
-  user:
-    password: none
+  basic:
+    enabled: false
   oauth2:
     client:
-      access-token-uri: http://${auth.server.hostname}:9191/uaa/oauth/token
-      user-authorization-uri: http://${auth.server.hostname}:9191/uaa/oauth/authorize
+      access-token-uri: http://localhost:9999/uaa/oauth/token
+      user-authorization-uri: http://localhost:9999/uaa/oauth/authorize
       client-id: webapp
-      client-secret: webappsecret
-      grant-type: password
+      client-secret: websecret
     resource:
-      user-info-uri: http://${auth.server.hostname}:9191/uaa/user
+      jwt:
+        key-value: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiSKHH02TInjoLiy+NlevFh7lLHlzMjl+DItzaBSh7ShrpwM2u0Lia05NYg2TACBnmVaouJ4xzM/kHT0V42w+FP1UEK3Grs/kQlNcjYdCi8+MrNL8cLHDlE/aStMncBy2iH0it9LYxyxAI+Ui6Xv3U1fXFhDz88Xia+JGb4YXVSr9+ducJiWE8iN8OCRpPJaWwww+ver5xAlICaftwd4w7turtfKNtgbcCGHETpa+bgcAhDxCBuvZA0HdRS6F9rP8TAhOtsenPsm0eKPsVp6ghOhI2l+8ykODONx+xUu9eREW48K6IvoW4VeoId24dzSXofoSpHbxG/uW3SWPBSVR6wIDAQAB
+          -----END PUBLIC KEY-----
     
 management:
   security:
@@ -49,21 +48,7 @@ ribbon:
 
 zuul:
   routes:
-    auth-server:
-      path: /authserver/**
-      service-id: spring-oauth2-template-auth-server
-    eureka-dashboard:
-      path: /eurekaui/**
-      service-id: spring-oauth2-template-eureka-server
-      strip-prefix: false
-    eureka-static:
-      path: /eureka/**
-      service-id: spring-oauth2-template-eureka-server
-      strip-prefix: false
-    config-server:
-      path: /configserver/**
-      service-id: spring-oauth2-template-config-server
     resource-server:
       path: /resourceserver/**
-      service-id: spring-oauth2-template-resource-server
+      url: http://localhost:9000
       

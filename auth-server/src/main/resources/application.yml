@@ -11,6 +11,9 @@ logging:
 security:
   sessions: if-required
   oauth2:
+    authorization:
+      token-key-access: permitAll()
+      check-token-access: isAuthenticated()
     resource:
       jwt:
         key-value: |
@@ -25,12 +28,6 @@ security:
 management:
   security:
     enabled: false
-    
-spring:
-  cloud:
-    config:
-      enabled: false
-
 ####### Temporary config - END ################################  
   
 ---
