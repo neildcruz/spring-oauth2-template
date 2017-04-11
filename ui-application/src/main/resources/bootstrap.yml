@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: spring-oauth2-template-ui-application
+    
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}
+      enabled: false
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true

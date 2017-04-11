@@ -16,11 +16,12 @@ services:
       - "8761:8761"
     environment:
       CONFIG_SERVER_URL: http://config-server:8888
+      EUREKA_SERVER_URL: http://eureka-server:8761/eureka
 
   auth-server:
     image: auth-server
     ports:
-      - "9191:9191"
+      - "9999:9999"
     links:
       - config-server
       - eureka-server
@@ -39,6 +40,7 @@ services:
       environment:
         CONFIG_SERVER_URL: http://config-server:8888
         EUREKA_SERVER_URL: http://eureka-server:8761/eureka
+        AUTH_SERVER_HOSTNAME: ${EXTERNAL_IP}
 
   resource-server:
       image: resource-server
@@ -47,7 +49,17 @@ services:
       links:
         - config-server
         - eureka-server
-        - auth-server
+      environment:
+        CONFIG_SERVER_URL: http://config-server:8888
+        EUREKA_SERVER_URL: http://eureka-server:8761/eureka
+
+  ui-application:
+      image: ui-application
+      ports:
+        - "9001:9001"
+      links:
+        - config-server
+        - eureka-server
       environment:
         CONFIG_SERVER_URL: http://config-server:8888
         EUREKA_SERVER_URL: http://eureka-server:8761/eureka

@@ -10,13 +10,17 @@ logging:
 
 ################# Security Configuration ###################
 
+auth:
+  server:
+    hostname: localhost
+
 security:
   basic:
     enabled: false
   oauth2:
     client:
-      access-token-uri: http://localhost:9999/uaa/oauth/token
-      user-authorization-uri: http://localhost:9999/uaa/oauth/authorize
+      access-token-uri: http://${auth.server.hostname}:9999/uaa/oauth/token
+      user-authorization-uri: http://${auth.server.hostname}:9999/uaa/oauth/authorize
       client-id: webapp
       client-secret: websecret
     resource:
@@ -50,5 +54,16 @@ zuul:
   routes:
     resource-server:
       path: /resourceserver/**
-      url: http://localhost:9000
+      service-id: spring-oauth2-template-resource-server
+    eureka-server:
+      path: /eurekaserver/**
+      service-id: spring-oauth2-template-eureka-server
+    eureka-static:
+      path: /eureka/**
+      service-id: spring-oauth2-template-eureka-server
+      strip-prefix: false
+    ui-application:
+      path: /**
+      service-id: spring-oauth2-template-ui-application
       
+            
