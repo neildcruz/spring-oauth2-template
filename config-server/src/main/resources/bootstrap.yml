@@ -1,16 +1,25 @@
 spring:
   application:
-    name: spring-oauth2-template-config-server
+    name: config-server
     
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/neildcruz/config-repository
-          
+          uri: ${CONFIG_REPO_URI:https://github.com/neildcruz/config-repository}
+          search-paths:
+          - default/**
+          - development/**
+          - qat/**
+          - production/** 
+
 eureka:
   client:
     service-url:
       defaultZone: ${EUREKA_SERVER_URL:http://localhost:8761/eureka}
     healthcheck:
       enabled: true
+
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
