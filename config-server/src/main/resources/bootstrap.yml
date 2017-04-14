@@ -6,12 +6,12 @@ spring:
     config:
       server:
         git:
-          uri: ${CONFIG_REPO_URI:https://github.com/neildcruz/config-repository}
+          uri: ${SPRING_CONFIG_URI:https://github.com/neildcruz/config-repository}
           search-paths:
-          - default/**
-          - development/**
-          - qat/**
-          - production/** 
+          - default*
+          - development*
+          - qat*
+          - production*
 
 eureka:
   client:
